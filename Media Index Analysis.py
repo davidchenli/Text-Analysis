@@ -8,9 +8,6 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import NMF
 from numpy.linalg import svd
 os.chdir("C:/Users/USER/Desktop/Text/")
-print(os.getcwd())
-
-
 
 
 #%%%% Function to deal with inconsistent date format
