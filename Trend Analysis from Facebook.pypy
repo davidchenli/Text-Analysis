@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 
 import os
 import pandas as pd
@@ -14,32 +9,6 @@ from nltk.stem import WordNetLemmatizer
 from numpy.linalg import norm
 import matplotlib.pyplot as plt
 import pickle
-
-
-# In[10]:
-
-
-#pickle.dump( dic, open( f'dic.p', "wb" ) )
-#pickle.dump( freqs, open( f'freqs.p', "wb" ) )
-#pickle.dump( sentence, open( f'sentcnts.p', "wb" ) )
-#pickle.dump( word, open( f'wordcnts.p', "wb" ) )
-#pickle.dump( coocs, open( f'coocs.p', "wb" ) )
-#os.getcwd()
-#corpus(f"C:/Users/USER/Desktop/fb2015/%s"%os.listdir(file)[1])
-#file="fb%d"%year[0]
-
-
-# In[11]:
-
-
-#dic=pickle.load(     open( f'dic.p', "rb"       ) )
-#freqs = pickle.load( open( f'freqs.p', "rb"    ) )
-#sen = pickle.load(   open( f'sentcnts.p', "rb" ) )
-#word = pickle.load(  open( f'wordcnts.p', "rb" ) )
-#coocs = pickle.load(open( f'coocs.p', "rb" ) )
-
-
-# In[21]:
 
 
 def cooccurrence_symmetric_window( sentlist, targets, weights ):
@@ -106,14 +75,11 @@ def cosin(word1,word2,mat,target):
     return((np.dot(mat[dit[word1]],mat[dit[word2]])/(norm(mat[dit[word1]])*norm(mat[dit[word2]]))).round(3))
 
 
-# In[19]:
 
 
 path= "C:/Users/USER/Desktop/"
 os.chdir(path)
 
-
-# In[20]:
 
 
 ## Target list Read
@@ -130,17 +96,12 @@ target=set(target)
 len(target)
 
 
-# In[34]:
-
-
 #### Clean and calculate frequency and cooc matrix
 year=range(2011,2016)
 mon=range(1,13)
 stop = {"URL"}|set(stopwords.words("english"))
 sentence,word,freqs,coocs=textseries(path=path,year=year, target=target,month=mon)
 
-
-# In[41]:
 
 
 #### Graph for word and sentence count
@@ -161,8 +122,6 @@ plt.ylabel("Count")
 plt.title("Number of Word")
 plt.show()
 
-
-# In[42]:
 
 
 ### Plot chosen word frequency with/without normalization with total word count
@@ -192,13 +151,7 @@ def plotrend1(year,mon,word,freqs,normal=True):
 plotrend1(year,mon,['cauliflower',"rice"],freqs,normal=True)
 
 
-# In[43]:
-
-
 plotrend1(year,mon,['cauliflower',"rice"],freqs,normal=False)
-
-
-# In[44]:
 
 
 # Plot ppmi and cosin similarity for chosen pair of word
@@ -235,10 +188,6 @@ def plotrend2(year,mon,word1,word2,targe,coocs,order1=True):
     plt.show()
 
 plotrend2(year,mon,"cauliflower","rice",target,coocs,False)
-
-
-# In[45]:
-
 
 plotrend2(year,mon,"cauliflower","rice",target,coocs,True)
 
